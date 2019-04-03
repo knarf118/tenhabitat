@@ -54,6 +54,9 @@ let toggleView = element => {
 todaysDate();
 
 setDate = input => {
+  if (input.value === ""){
+    return;
+  }
   end = new Date(input.value + "T00:00:00");
   if (document.getElementById('cd').style.display === "none") {
     toggleView("cd");
