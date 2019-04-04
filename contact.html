@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Countdown to Deadline</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div>
+        <a href="index.html" class="logo"><img src="frank logo.png" alt=""/></a>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a class="active" href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+    <div class="frostbg center" style="justify-content:initial">
+      <h1>Contact Us</h1>
+      <form
+        class="center"
+        role="form"
+        id="contact_form"
+        style="color: #757575;"
+        method="post"
+      >
+        <div>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            required
+            maxlength="50"
+          />
+          <label for="name">Name</label>
+        </div>
+        <div>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            required
+            maxlength="50"
+          />
+          <label for="email">E-mail</label>
+        </div>
+        <div>
+          <textarea
+            type="text"
+            id="message"
+            name="message"
+            class="form-control md-textarea"
+            rows="3"
+            required
+            minlength="50"
+          ></textarea>
+          <label for="message">Message</label>
+        </div>
+        <button type="submit" id="btnSubmitContact">
+          Send
+        </button>
+      </form>
+    </div>
+    <p id="now" style="display:none" class="center shadow"></p>
+    <h3 id="end" class="center shadow"></h3>
+    <div id="cd" class="countdown" style="display:grid">
+      <p id="days" class="clock center"></p>
+      <p id="hours" class="clock center"></p>
+      <p id="minutes" class="clock center"></p>
+      <p id="seconds" class="clock center"></p>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

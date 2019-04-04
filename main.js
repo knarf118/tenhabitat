@@ -1,39 +1,39 @@
-// fix update after countdown ends
 let input = document.getElementById("userinput");
-let end = new Date("april 8, 2019 12:00:00");
-// Array of day names
-let dayNames = new Array(
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-);
+const initialState = {
+  end: "april 8, 2019 12:00:00",
+  dayNames: [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ],
+  monthNames: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ]
+};
+let end = new Date(sessionStorage["end"] || initialState.end);
 
-// Array of month Names
-let monthNames = new Array(
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-);
 let todaysDate = () => {
   let now = new Date();
   document.getElementById("now").innerHTML =
     "Todays Date: " +
-    dayNames[now.getDay()] +
+    initialState.dayNames[now.getDay()] +
     ", " +
-    monthNames[now.getMonth()] +
+    initialState.monthNames[now.getMonth()] +
     " " +
     now.getDate() +
     ", " +
@@ -54,11 +54,12 @@ let toggleView = element => {
 todaysDate();
 
 setDate = input => {
-  if (input.value === ""){
+  if (input.value === "") {
     return;
   }
   end = new Date(input.value + "T00:00:00");
-  if (document.getElementById('cd').style.display === "none") {
+  sessionStorage["end"] = end;
+  if (document.getElementById("cd").style.display === "none") {
     toggleView("cd");
     x = setInterval(showDate, 1000);
   }
@@ -66,9 +67,9 @@ setDate = input => {
 let showDate = () => {
   document.getElementById("end").innerHTML =
     "End Date: " +
-    dayNames[end.getDay()] +
+    initialState.dayNames[end.getDay()] +
     ", " +
-    monthNames[end.getMonth()] +
+    initialState.monthNames[end.getMonth()] +
     " " +
     end.getDate() +
     ", " +

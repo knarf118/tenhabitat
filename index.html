@@ -8,19 +8,31 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   </head>
   <body>
-    <H1 class="center">Simple Countdown to a Deadline</H1>
-    <p id="now"></p>
-    <h2 id="end" class="center"></h2>
-    <button onclick="toggleView('todaysDate')">Edit end date</button>
-    <div id="todaysDate" class="center" style="display:none">
-      <input id="userinput" type="date" />
-      <button
-        id="dateSubmit"
-        class="edit"
-        onclick="setDate(document.getElementById('userinput'))"
-      >
-        submit new date
-      </button>
+    <div class="topbar">
+      <div>
+        <a href="index.html" class="logo"><img src="frank logo.png" alt=""/></a>
+      </div>
+      <nav class="nav">
+        <a class="active" href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+    <div class="frostbg center" style="justify-content:initial">
+      <h1>Simple Countdown to a Deadline</h1>
+      <p id="now" class="shadow"></p>
+      <h3 id="end" class="center shadow"></h3>
+      <button onclick="toggleView('todaysDate')">Edit end date</button>
+      <div id="todaysDate" class="center" style="display:none">
+        <input id="userinput" type="date" />
+        <button
+          id="dateSubmit"
+          onclick="setDate(document.getElementById('userinput'))"
+        >
+          submit new date
+        </button>
+      </div>
     </div>
     <div id="cd" class="countdown" style="display:grid">
       <p id="days" class="clock center"></p>
