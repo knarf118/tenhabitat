@@ -23,6 +23,18 @@ const initialState = {
     "October",
     "November",
     "December"
+  ],
+  replacedElements: {
+    days: "0",
+    hours: "0",
+    minutes: "0",
+    seconds: "0"
+  },
+  replacedElementsArr: [
+    "days",
+    "hours",
+    "minutes",
+    "seconds",
   ]
 };
 let end = new Date(sessionStorage["end"] || initialState.end);
@@ -40,9 +52,7 @@ let todaysDate = () => {
     now.getFullYear();
   return now;
 };
-let removeElement = element => {
-  element && element.parentNode && element.parentNode.removeChild(element);
-};
+
 let toggleView = element => {
   var x = document.getElementById(element);
   if (x.style.display === "none") {
@@ -78,15 +88,16 @@ let showDate = () => {
   let now = new Date();
   let elapsed = end - now;
 
-  let days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+  initialState.replacedElements.days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+  initialState.replacedElements.hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  initialState.replacedElements.minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+  initialState.replacedElements.seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
 
-  document.getElementById("days").innerHTML = days + "d ";
-  document.getElementById("hours").innerHTML = hours + "h ";
-  document.getElementById("minutes").innerHTML = minutes + "m ";
-  document.getElementById("seconds").innerHTML = seconds + "s ";
+  for (let index = 0; index < initialState.replacedElementsArr.length; index++) {
+    const element = initialState.replacedElementsArr[index];
+    const firstChar = element.charAt(0);
+    document.getElementById(element).innerHTML = initialState.replacedElements[element] + firstChar;
+  }
 
   if (elapsed < 0) {
     clearInterval(x);
