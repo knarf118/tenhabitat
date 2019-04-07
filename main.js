@@ -30,12 +30,7 @@ const initialState = {
     minutes: "0",
     seconds: "0"
   },
-  replacedElementsArr: [
-    "days",
-    "hours",
-    "minutes",
-    "seconds",
-  ]
+  replacedElementsArr: ["days", "hours", "minutes", "seconds"]
 };
 let end = new Date(sessionStorage["end"] || initialState.end);
 
@@ -56,13 +51,18 @@ let todaysDate = () => {
 let toggleView = element => {
   var x = document.getElementById(element);
   if (x.style.display === "none") {
+    element === "todaysDate" ? (sessionStorage[element + "View"] = true) : "";
     x.style.display = "grid";
   } else {
+    element === "todaysDate" ? (sessionStorage[element + "View"] = false) : "";
     x.style.display = "none";
   }
 };
 todaysDate();
 
+document.getElementById("end").addEventListener("click", () => {
+  toggleView("todaysDate");
+});
 setDate = input => {
   if (input.value === "") {
     return;
@@ -74,6 +74,9 @@ setDate = input => {
     x = setInterval(showDate, 1000);
   }
 };
+document.getElementById("dateSubmit").addEventListener("click", () => {
+  setDate(document.getElementById("userinput"));
+});
 let showDate = () => {
   document.getElementById("end").innerHTML =
     "End Date: " +
@@ -88,15 +91,28 @@ let showDate = () => {
   let now = new Date();
   let elapsed = end - now;
 
-  initialState.replacedElements.days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
-  initialState.replacedElements.hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  initialState.replacedElements.minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
-  initialState.replacedElements.seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+  initialState.replacedElements.days = Math.floor(
+    elapsed / (1000 * 60 * 60 * 24)
+  );
+  initialState.replacedElements.hours = Math.floor(
+    (elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  initialState.replacedElements.minutes = Math.floor(
+    (elapsed % (1000 * 60 * 60)) / (1000 * 60)
+  );
+  initialState.replacedElements.seconds = Math.floor(
+    (elapsed % (1000 * 60)) / 1000
+  );
 
-  for (let index = 0; index < initialState.replacedElementsArr.length; index++) {
+  for (
+    let index = 0;
+    index < initialState.replacedElementsArr.length;
+    index++
+  ) {
     const element = initialState.replacedElementsArr[index];
     const firstChar = element.charAt(0);
-    document.getElementById(element).innerHTML = initialState.replacedElements[element] + firstChar;
+    document.getElementById(element).innerHTML =
+      initialState.replacedElements[element] + firstChar;
   }
 
   if (elapsed < 0) {
@@ -106,3 +122,12 @@ let showDate = () => {
   }
 };
 let x = setInterval(showDate, 1000);
+
+window.addEventListener("load", () => {
+  if (!sessionStorage["todaysDateView"] || sessionStorage["todaysDateView"] === "false") {
+    let date = document.getElementById("todaysDate");
+    if (!date.style.display || date.style.display == "") {
+      date.style.display = "none";
+    }
+  }
+});

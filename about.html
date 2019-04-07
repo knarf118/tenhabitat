@@ -63,9 +63,16 @@
           target="_blank">wikipedia<i class="fas fa-external-link-alt"></i></a>
       </p>
     </article>
+    <p id="now" style="display:none" class="center shadow"></p>
+    <h3 id="end" class="center shadow" title="Click to edit Date"></h3>
+    <button id="editDate" onclick="toggleView('todaysDate')">Edit end date</button>
+    <div id="todaysDate" class="center">
+      <input id="userinput" type="date" />
+      <button id="dateSubmit">
+        submit new date
+      </button>
+    </div>
   </div>
-  <p id="now" style="display:none" class="center shadow"></p>
-  <h3 id="end" class="center shadow"></h3>
   <div id="cd" class="countdown" style="display:grid">
     <p id="days" class="clock center"></p>
     <p id="hours" class="clock center"></p>

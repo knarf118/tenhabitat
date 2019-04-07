@@ -24,11 +24,11 @@
   <div class="frostbg center" style="justify-content:initial">
     <h1>Simple Countdown to a Deadline</h1>
     <p id="now" class="shadow"></p>
-    <h3 id="end" class="center shadow"></h3>
-    <button onclick="toggleView('todaysDate')">Edit end date</button>
-    <div id="todaysDate" class="center" style="display:none">
+    <h3 id="end" class="center shadow" title="Click to edit Date"></h3>
+    <button id="editDate" onclick="toggleView('todaysDate')">Edit end date</button>
+    <div id="todaysDate" class="center">
       <input id="userinput" type="date" />
-      <button id="dateSubmit" onclick="setDate(document.getElementById('userinput'))">
+      <button id="dateSubmit">
         submit new date
       </button>
     </div>

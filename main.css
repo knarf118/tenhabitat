@@ -1,5 +1,11 @@
+#end, button{
+  cursor: pointer;
+}
 td{
   padding: 15px;
+}
+#editDate{
+  display: none;
 }
 td a,
 td i {
@@ -99,6 +105,11 @@ button {
 }
 .img:hover {
   transform: scale(1.1);
+}
+@media only screen and (max-width: 1366px) {
+  #editDate{
+    display: grid;
+  }
 }
 @media only screen and (max-width: 500px) {
   .countdown {

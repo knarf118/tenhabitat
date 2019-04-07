@@ -31,9 +31,16 @@
       <img class="img" src="https://static.pexels.com/photos/1624258/pexels-photo-1624258.jpeg" />
       <img class="img" src="https://3dprint.com/wp-content/uploads/2015/11/sundial.jpg" />
     </div>
+    <p id="now" style="display:none" class="shadow"></p>
+    <h3 id="end" class="center shadow" title="Click to edit Date"></h3>
+    <button id="editDate" onclick="toggleView('todaysDate')">Edit end date</button>
+    <div id="todaysDate" class="center">
+      <input id="userinput" type="date" />
+      <button id="dateSubmit">
+        submit new date
+      </button>
+    </div>
   </div>
-  <p id="now" style="display:none" class="shadow"></p>
-  <h3 id="end" class="center shadow"></h3>
   <div id="cd" class="countdown" style="display:grid">
     <p id="days" class="clock center"></p>
     <p id="hours" class="clock center"></p>
