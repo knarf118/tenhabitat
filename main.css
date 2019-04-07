@@ -1,8 +1,10 @@
+td{
+  padding: 15px;
+}
 td a,
 td i {
   color: rgba(17, 86, 212, 0.747);
   text-decoration: none;
-  padding: 5px;
 }
 td i:hover,
 td a:hover {
